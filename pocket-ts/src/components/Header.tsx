@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import {
   Popover,
@@ -55,11 +56,33 @@ function MobileNavLink(
   )
 }
 
+// Component to provide space for the fixed header
+export function HeaderSpacer() {
+  return <div className="h-[84px]" />
+}
+
 export function Header() {
+  const [scrolled, setScrolled] = useState(false)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled 
+          ? 'bg-white/95 backdrop-blur-sm shadow-md py-2' 
+          : 'bg-white/90 py-4'
+      }`}
+    >
       <nav>
-        <Container className="relative z-50 flex justify-between py-8">
+        <Container className="relative flex justify-between">
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
               <Logo className="h-10 w-auto" />
