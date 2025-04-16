@@ -304,6 +304,7 @@ export function Reviews() {
       id="reviews"
       aria-labelledby="reviews-title"
       className="pt-20 pb-16 sm:pt-32 sm:pb-24"
+      style={{ backgroundColor: '#F9F9F9' }}
     >
       <Container>
         <h2

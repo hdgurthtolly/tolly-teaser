@@ -8,6 +8,22 @@ export function NavLinks() {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   let timeoutRef = useRef<number | null>(null)
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only apply smooth scroll for hash links (internal page navigation)
+    if (href.startsWith('/#')) {
+      e.preventDefault()
+      const targetId = href.replace('/#', '')
+      const targetElement = document.getElementById(targetId)
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: 'smooth',
+        })
+      }
+    }
+  }
+
   return [
     ['Wie funktioniert das?', '/#features'],
     ['Reviews', '/#reviews'],
@@ -17,6 +33,7 @@ export function NavLinks() {
       key={label}
       href={href}
       className="relative -mx-3 -my-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition-colors delay-150 hover:text-gray-900 hover:delay-0"
+      onClick={(e) => handleSmoothScroll(e, href)}
       onMouseEnter={() => {
         if (timeoutRef.current) {
           window.clearTimeout(timeoutRef.current)
