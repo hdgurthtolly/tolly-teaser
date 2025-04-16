@@ -37,23 +37,23 @@ interface CustomAnimationProps {
 
 const features = [
   {
-    name: 'Invite friends for better returns',
+    name: 'Personalisieren',
     description:
-      'For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.',
+      'Ein paar Details reichen aus: Name, Alter, Bild (optional) – und schon geht’s los!',
     icon: DeviceUserIcon,
     screen: InviteScreen,
   },
   {
-    name: 'Notifications on stock dips',
+    name: 'Vorschau erhalten',
     description:
-      'Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.',
+      'Erhalte in wenigen Minuten eine Vorschau deines maßgeschneiderten Buches',
     icon: DeviceNotificationIcon,
     screen: StocksScreen,
   },
   {
-    name: 'Invest what you want',
+    name: 'Buch vorlesen',
     description:
-      'We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.',
+      'Gefällt dir die Vorschau? Wir übernehmen den Druck & liefern das Buch bequem nach Hause',
     icon: DeviceTouchIcon,
     screen: InvestScreen,
   },
@@ -577,13 +577,10 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <h2 className="text-3xl font-medium tracking-tight text-white">
-            Every feature you need to win. Try it for yourself.
+          In ein paar Sekunden zum fertigen Buch
           </h2>
           <p className="mt-2 text-lg text-gray-400">
-            Pocket was built for investors like you who play by their own rules
-            and aren’t going to let SEC regulations get in the way of their
-            dreams. If other investing tools are afraid to build it, Pocket has
-            it.
+          Ganz einfach, Schritt für Schritt erklärt
           </p>
         </div>
       </Container>

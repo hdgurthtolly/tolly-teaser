@@ -29,8 +29,8 @@ export function Footer() {
             <div className="flex items-center text-gray-900">
               <Logomark className="h-10 w-10 flex-none fill-cyan-500" />
               <div className="ml-4">
-                <p className="text-base font-semibold">Pocket</p>
-                <p className="mt-1 text-sm">Invest at the perfect time.</p>
+                <p className="text-base font-semibold">Tolly</p>
+                <p className="mt-1 text-sm">Personalisierte Geschichten, wunderschön gedruckt</p>
               </div>
             </div>
             <nav className="mt-11 flex gap-8">
@@ -66,12 +66,12 @@ export function Footer() {
               className="w-60 min-w-0 shrink"
             />
             <Button type="submit" color="cyan" className="ml-4 flex-none">
-              <span className="hidden lg:inline">Join our newsletter</span>
-              <span className="lg:hidden">Join newsletter</span>
+              <span className="hidden lg:inline">Newsletter</span>
+              <span className="lg:hidden">Gratis Buch</span>
             </Button>
           </form>
           <p className="mt-6 text-sm text-gray-500 md:mt-0">
-            &copy; Copyright {new Date().getFullYear()}. All rights reserved.
+            &copy; Tolly {new Date().getFullYear()}. Mit Liebe in Berlin entwickelt.
           </p>
         </div>
       </Container>
