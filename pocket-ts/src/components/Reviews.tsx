@@ -3,6 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { useInView } from 'framer-motion'
+import Image from 'next/image'
+import bookImage from '../public/book.jpeg'
 
 import { Container } from '@/components/Container'
 
@@ -15,87 +17,87 @@ interface Review {
 
 const reviews: Array<Review> = [
   {
-    title: 'It really works.',
-    body: 'I downloaded Pocket today and turned $5000 into $25,000 in half an hour.',
-    author: 'CrazyInvestor',
+    title: 'Sehr empfehlenswert',
+    body: 'Meine Tochter liebt die Abenteuer von unserem Hund, Tequila. Es ist auch wirklich süß & witzig Tequila im Weltall, oder auf einer geheimen Mission in Berlin Mitte zu sehen.',
+    author: 'Xavier G.',
     rating: 5,
   },
   {
-    title: 'You need this app.',
-    body: 'I didn’t understand the stock market at all before Pocket. I still don’t, but at least I’m rich now.',
-    author: 'CluelessButRich',
+    title: 'Sehr empfehlenswert',
+    body: 'Ich bin nicht sehr technikaffin, aber das Erstellen des Buches war so einfach! In weniger als 20 Minuten hatte ich ein personalisiertes Meisterwerk für meinen Sohn.',
+    author: 'Thomas B.',
     rating: 5,
   },
   {
-    title: 'This shouldn’t be legal.',
-    body: 'Pocket makes it so easy to win big in the stock market that I can’t believe it’s actually legal.',
-    author: 'LivingDaDream',
+    title: 'Sehr empfehlenswert',
+    body: 'Die Charaktere sehen meiner Tochter so ähnlich! Sie war begeistert, sich selbst in der Geschichte zu sehen. Ein wunderbares Geschenk!',
+    author: 'Claudia M.',
     rating: 5,
   },
   {
-    title: 'Screw financial advisors.',
-    body: 'I barely made any money investing in mutual funds. With Pocket, I’m doubling my net-worth every single month.',
-    author: 'JordanBelfort1962',
+    title: 'Richtig gut!',
+    body: 'Ich bin nicht sehr technikaffin, aber das Erstellen des Buches war so einfach! In weniger als 20 Minuten hatte ich ein personalisiertes Meisterwerk für meinen Sohn.',
+    author: 'Thomas B.',
     rating: 5,
   },
   {
-    title: 'I love it!',
-    body: 'I started providing insider information myself and now I get new insider tips every 5 minutes. I don’t even have time to act on all of them. New Lamborghini is being delivered next week!',
-    author: 'MrBurns',
+    title: 'Unglaublich einfach!',
+    body: 'Großer Fan von den Büchern. Habe mittlerweile 3 Bücher bestellt und bin begeistert!',
+    author: 'Thea S.',
     rating: 5,
   },
   {
-    title: 'Too good to be true.',
-    body: 'I was making money so fast with Pocket that it felt like a scam. But I sold my shares and withdrew the money and it’s really there, right in my bank account. This app is crazy!',
-    author: 'LazyRich99',
+    title: 'Mal was anderes',
+    body: 'Sehr cool mal selber eine Geschichte erstellen zu können. Ich bin begeistert!',
+    author: 'Max M.',
     rating: 5,
   },
   {
-    title: 'Wish I could give 6 stars',
-    body: 'This is literally the most important app you will ever download in your life. Get on this before it’s so popular that everyone else is getting these tips too.',
-    author: 'SarahLuvzCash',
+    title: 'Hat etwas gedauert, aber sehr nice',
+    body: 'Habe eine Weile auf mein Buch warten müssen, aber meine Tochter war begeistert!',
+    author: 'Sarah L.',
     rating: 5,
   },
   {
-    title: 'Bought an island.',
-    body: 'Yeah, you read that right. Want your own island too? Get Pocket.',
-    author: 'ScroogeMcduck',
+    title: 'Besser als erwartet',
+    body: 'Die KI hat überraschend gute Bilder erstellt.',
+    author: 'Theo M.',
     rating: 5,
   },
   {
-    title: 'No more debt!',
-    body: 'After 2 weeks of trading on Pocket I was debt-free. Why did I even go to school at all when Pocket exists?',
-    author: 'BruceWayne',
+    title: 'Lustige Geschichte',
+    body: 'Mein Sohn liebt Eichhörnchen. Die Geschichte ist sehr lustig und macht Spaß zu lesen.',
+    author: 'Sarah L.',
     rating: 5,
   },
   {
-    title: 'I’m 13 and I’m rich.',
-    body: 'I love that with Pocket’s transaction anonymization I could sign up and start trading when I was 12 years old. I had a million dollars before I had armpit hair!',
-    author: 'RichieRich',
+    title: 'Mag die Bücher von Harry sehr gerne',
+    body: 'Eigene Geschichten sind natürlich nochmal was anderes, aber auch die Geschichten von dem Tolly Team für 3-jährige sind super!',
+    author: 'Luka L.',
     rating: 5,
   },
   {
-    title: 'Started an investment firm.',
-    body: 'I charge clients a 3% management fee and just throw all their investments into Pocket. Easy money!',
-    author: 'TheCountOfMonteChristo',
+    title: 'Sehr empfehlenswert',
+    body: 'Hat auch am Handy gut geklappt!',
+    author: 'Thomas B.',
     rating: 5,
   },
   {
-    title: 'It’s like a superpower.',
-    body: 'Every tip Pocket has sent me has paid off. It’s like playing Blackjack but knowing exactly what card is coming next!',
-    author: 'ClarkKent',
+    title: 'Schönes Geschenk',
+    body: 'Habe ein Buch für die Tochter meines Bruders erstellt. Haben sich beide sehr gefreut!',
+    author: 'Claudia M.',
     rating: 5,
   },
   {
-    title: 'Quit my job.',
-    body: 'I downloaded Pocket three days ago and quit my job today. I can’t believe no one else thought to build a stock trading app that works this way!',
-    author: 'GeorgeCostanza',
+    title: 'Besser als gedacht',
+    body: 'War skeptisch wegen der KI, aber das Buch ist wirklich super!',
+    author: 'Thomas B.',
     rating: 5,
   },
   {
-    title: 'Don’t download this app',
-    body: 'Unless you want to have the best life ever! I am literally writing this from a yacht.',
-    author: 'JeffBezos',
+    title: 'Web-app ist richtig gut gemacht',
+    body: 'Cool was diese kleine Berliner Start-up hier auf die Beine gestellt hat.',
+    author: 'Won L.',
     rating: 5,
   },
 ]
@@ -116,7 +118,7 @@ function StarRating({ rating }: { rating: Review['rating'] }) {
           key={index}
           className={clsx(
             'h-5 w-5',
-            rating > index ? 'fill-cyan-500' : 'fill-gray-300',
+            rating > index ? 'fill-[#3346B3]' : 'fill-gray-300',
           )}
         />
       ))}
@@ -148,16 +150,42 @@ function Review({
       style={{ animationDelay }}
       {...props}
     >
-      <blockquote className="text-gray-900">
-        <StarRating rating={rating} />
-        <p className="mt-4 text-lg/6 font-semibold before:content-['“'] after:content-['”']">
-          {title}
-        </p>
-        <p className="mt-3 text-base/7">{body}</p>
-      </blockquote>
-      <figcaption className="mt-3 text-sm text-gray-600 before:content-['–_']">
-        {author}
-      </figcaption>
+      <div className="flex flex-col gap-4">
+        {/* Top row: Rating and title on left, image on right */}
+        <div className="flex justify-between items-start gap-4">
+          <div className="flex-1">
+            <StarRating rating={rating} />
+            <p className="mt-3 text-lg/6 font-semibold relative">
+              <span className="before-quote">{title}</span>
+            </p>
+            <style jsx>{`
+              .before-quote::before {
+                content: '"';
+              }
+              .before-quote::after {
+                content: '"';
+              }
+            `}</style>
+          </div>
+          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
+            <Image 
+              src={bookImage}
+              alt="Book preview" 
+              width={96} 
+              height={96} 
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+        
+        {/* Bottom row: Body text and author */}
+        <div>
+          <p className="text-base/7 text-gray-900">{body}</p>
+          <figcaption className="mt-3 text-sm text-gray-600 before:content-['–_']">
+            {author}
+          </figcaption>
+        </div>
+      </div>
     </figure>
   )
 }
